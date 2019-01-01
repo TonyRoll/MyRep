@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Брюки, Envy Lab</title>
+		<link rel="stylesheet" href="cssfile.css">
+	</head>
+	<body>
+		<header>
+			<a href="page1.html"><h1>Магазин трех вещей</h1></a>
+			<p>Обновления каждую неделю. Только топ три!</p>
+		</header>
+		<article>
+			<table>
+	<tr>
+		<td><img src="../images/Trousers1.jpg" width="90"  height="120" name=polo14 alt="Polo" onMouseOver="pervay(m)"></td>
+		<td colspan="2" rowspan="4"><img src="../images/Trousers1.jpg" width="270" height="380" name=def alt="Polo"></td>
+		<td>Брюки, Envy Lab <br>150 р. 54 к. </td>
+		
+	</tr>
+	<tr>
+		<td><img src="../images/Trousers2.jpg" width="90" height="120" name=polo25 alt="Polo" onMouseOver="vtoraya(m)"></td>
+		<td><b>Цвет</b>:<br><p>
+			<img  class="changColorImage" src="../images/Trousers1.jpg" width="90" height="120" name=first alt="Black" title="Черный" onclick="colors1(this)">
+			<img  class="changColorImage" src="../images/Trousers3.jpg" width="90" height="120" name=pic alt="White" title="Белый" onclick="colors(this)">
+		</p> </td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><b>Размер</b>:<br>
+			 <form>
+			   <p><input class="changColorBut" type="button" value="S" onclick="razmer(this)"> <input class="changColorBut" type="button" value="M" onclick="razmer(this)"> <input class="changColorBut" type="button" value="L" onclick="razmer(this)"> <input class="changColorBut" type="button" value="XL" onclick="razmer(this)"> <input class="changColorBut" type="button" value="2XL" onclick="razmer(this)"></p>
+			  </form>
+			<input type="submit" value="Добавить в корзину" onclick="zakaz()">
+		</td>
+		
+	</tr>
+</table>
+<div class="modal">
+		<h2>Ваш заказ</h2>
+		<h2>Брюки, Envy Lab</h2>
+		<p id="output1"></p>
+		<p id="output2"></p>
+		 <script>
+		 		function ColorAndSize(m){
+		 			if(m==-1){
+		 			document.getElementById('output1').innerHTML = '<b>Цвет</b>: Черный';
+		 			}
+		 			if(m==1){
+		 			document.getElementById('output1').innerHTML = '<b>Цвет</b>: Коричневый';
+		 			}
+		 			
+		 		}
+		 </script>
+		</div>
+		</article>
+		<footer>
+			<br>Савенок Антон Александрович<br>Гомель, 2018
+		</footer>
+		<script language="JavaScript">
+			var m=-1;
+				let changeColorImages = document.getElementsByClassName("changColorImage");
+				let changeColorBut = document.getElementsByClassName("changColorBut");
+				const removeClass = (arrayOfElements, deletedClass) => {
+					arrayOfElements.forEach(element => {
+						element.classList.remove(deletedClass);
+					});
+				};
+				console.log([...changeColorImages]);
+				const removeClassesFromColorImages = () => removeClass([...changeColorImages], "choosedImg");
+				console.log([...changeColorBut]);
+				const removeClassesFromColorBut = () => removeClass([...changeColorBut], "choosedBut");
+							
+				function razmer(e){
+					removeClassesFromColorBut();
+					e.classList.add("choosedBut");
+				}
+	
+				function colors(e){
+					removeClassesFromColorImages();
+					e.classList.add("choosedImg");
+					m=1;
+					document.def.src = "../images/Trousers3.jpg";
+					document.polo14.src = "../images/Trousers3.jpg";
+					document.polo25.src = "../images/Trousers4.jpg";
+				}
+				function colors1(e){
+					removeClassesFromColorImages();
+					e.classList.add("choosedImg");
+					m=-1;
+					document.def.src = "../images/Trousers1.jpg";
+					document.polo14.src = "../images/Trousers1.jpg";
+					document.polo25.src = "../images/Trousers2.jpg";
+				}	
+				function pervay(){
+					if(m==-1){
+						 document.def.src = "../images/Trousers1.jpg";
+					}
+					if(m==1){
+						 document.def.src = "../images/Trousers3.jpg";
+					}
+				}
+				function vtoraya(){
+					if(m==-1){
+						 document.def.src = "../images/Trousers2.jpg";
+					}
+					if(m==1){
+						 document.def.src = "../images/Trousers4.jpg";
+					}
+				}
+				var modal = document.querySelector('.modal');
+			var overflow = document.createElement('div');
+			function zakaz(){
+				overflow.className="overflow";	
+				document.body.appendChild(overflow);
+				var height = modal.offsetHeight;
+				modal.style.marginTop = - height/2+"px";
+				modal.style.top = "50%";
+				ColorAndSize(m);
+				razmer2(r);
+				}
+				overflow.onclick = function(){
+				modal.style.top = "-100%";
+				overflow.remove();
+			}
+			</script>
+	</body>
+</html>
